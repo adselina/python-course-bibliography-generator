@@ -32,7 +32,7 @@ class BookModel(BaseModel):
     publishing_house: str
     year: int = Field(..., gt=0)
     pages: int = Field(..., gt=0)
-    doi: Optional[str]
+    doi: str
 
 
 class InternetResourceModel(BaseModel):
@@ -132,4 +132,4 @@ class ArticleModel(BaseModel):
     year: int = Field(..., gt=0)
     journal_number: Optional[int] = Field(..., gt=0)
     pages: str
-    doi: Optional[str]
+    doi: str

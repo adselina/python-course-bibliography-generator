@@ -18,7 +18,7 @@ class Renderer:
     def __init__(self, rows: tuple[str, ...]):
         self.rows = rows
 
-    def render(self, path) -> None:
+    def render(self, path: Any) -> None:
         """
         Метод генерации Word-файла со списком использованных источников.
 
@@ -58,7 +58,7 @@ class Renderer:
         # сохранение файла Word
         document.save(path)
 
-    def get_styles(self, document) -> Any:
+    def get_styles(self, document: Any) -> Any:
         """
         Метод получения стилей.
 
@@ -70,7 +70,7 @@ class Renderer:
 
 
 class GOSTRenderer(Renderer):
-    def get_styles(self, document) -> Any:
+    def get_styles(self, document: Any) -> Any:
         """
         Метод получения стилей. Для ГОСТ - Нумерованный список.
         :param document | Any document: Текущий документ.
@@ -81,7 +81,7 @@ class GOSTRenderer(Renderer):
 
 
 class APARenderer(Renderer):
-    def get_styles(self, document) -> None:
+    def get_styles(self, document: Any) -> None:
         """
         Метод получения стилей. Для APA - НЕ нумерованный список и отступ.
         :param document | Any document: Текущий документ.

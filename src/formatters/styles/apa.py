@@ -30,7 +30,7 @@ def get_doi(doi: str) -> str:
     return ""
 
 
-def get_authors(input_authors) -> str:
+def get_authors(input_authors: str) -> str:
     """
     Получение отформатированной информации об авторах.
     :param input_authors | str input_authors: Входная строка с авторами.

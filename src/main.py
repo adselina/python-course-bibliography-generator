@@ -10,7 +10,7 @@ from formatters.styles.gost import GOSTCitationFormatter
 from logger import get_logger
 from readers.reader import SourcesReader
 from renderer import APARenderer, GOSTRenderer
-from settings import INPUT_FILE_PATH, OUTPUT_FILE_PATH, TEMPLATE_FILE_PATH
+from settings import INPUT_FILE_PATH, OUTPUT_FILE_PATH
 
 logger = get_logger(__name__)
 
@@ -55,7 +55,7 @@ class CitationEnum(Enum):
 )
 def process_input(
     citation: str = CitationEnum,
-    path_input: str = TEMPLATE_FILE_PATH,  # TEMPLATE_FILE_PATH
+    path_input: str = INPUT_FILE_PATH,
     path_output: str = OUTPUT_FILE_PATH,
 ) -> None:
     """

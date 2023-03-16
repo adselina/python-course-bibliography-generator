@@ -34,8 +34,9 @@ class TestAPA:
         model = APABook(book_model_fixture)
 
         assert (
-            model.formatted == "Иванов И.М., &  Петров С.Н. (2020). ITALICНаука как искусство.ITALIC Просвещение. "
-                               "10.2196/16504 "
+            model.formatted
+            == "Иванов И.М., &  Петров С.Н. (2020). ITALICНаука как искусство.ITALIC Просвещение. "
+            "10.2196/16504"
         )
 
     def test_article(self, article_model_fixture: ArticleModel) -> None:
@@ -48,8 +49,9 @@ class TestAPA:
         model = APAArticle(article_model_fixture)
 
         assert (
-            model.formatted == "Иванов И.М., &  Петров С.Н. (2020). Наука как искусство. ITALICОбразование и "
-                               "наука,ITALIC 10, 25-30. 10.2196/16504 "
+            model.formatted
+            == "Иванов И.М., &  Петров С.Н. (2020). Наука как искусство. ITALICОбразование и "
+            "наука,ITALIC 10, 25-30. 10.2196/16504"
         )
 
     def test_dissertation(self, dissertation_model_fixture: DissertationModel) -> None:
@@ -67,7 +69,7 @@ class TestAPA:
         )
 
     def test_internet_resource(
-            self, internet_resource_model_fixture: InternetResourceModel
+        self, internet_resource_model_fixture: InternetResourceModel
     ) -> None:
         """
         Тестирование форматирования интернет-ресурса.
@@ -79,11 +81,12 @@ class TestAPA:
         model = APAInternetResource(internet_resource_model_fixture)
 
         assert (
-            model.formatted == "Ведомости (01.01.2021) ITALICНаука как искусство ITALIC https://www.vedomosti.ru"
+            model.formatted
+            == "Ведомости (01.01.2021) ITALICНаука как искусство ITALIC https://www.vedomosti.ru"
         )
 
     def test_articles_collection(
-            self, articles_collection_model_fixture: ArticlesCollectionModel
+        self, articles_collection_model_fixture: ArticlesCollectionModel
     ) -> None:
         """
         Тестирование форматирования сборника статей.
@@ -95,17 +98,18 @@ class TestAPA:
         model = APACollectionArticle(articles_collection_model_fixture)
 
         assert (
-            model.formatted == "Иванов И.М., Петров С.Н. (2020) Наука как искусство, ITALICСборник научных трудов "
-                               "ITALIC СПб.: АСТ, 25-30 p. "
+            model.formatted
+            == "Иванов И.М., Петров С.Н. (2020) Наука как искусство, ITALICСборник научных трудов "
+            "ITALIC СПб.: АСТ, 25-30 p."
         )
 
     def test_citation_formatter(
-            self,
-            book_model_fixture: BookModel,
-            internet_resource_model_fixture: InternetResourceModel,
-            articles_collection_model_fixture: ArticlesCollectionModel,
-            article_model_fixture: ArticleModel,
-            dissertation_model_fixture: DissertationModel,
+        self,
+        book_model_fixture: BookModel,
+        internet_resource_model_fixture: InternetResourceModel,
+        articles_collection_model_fixture: ArticlesCollectionModel,
+        article_model_fixture: ArticleModel,
+        dissertation_model_fixture: DissertationModel,
     ) -> None:
         """
         Тестирование функции итогового форматирования списка источников.
