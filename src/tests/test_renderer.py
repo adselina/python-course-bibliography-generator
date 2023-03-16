@@ -40,4 +40,4 @@ class TestRenderer:
         # проверка наличия файла
         assert len(list(tmp_path.iterdir())) == 1
         # проверка размера файла в байтах на диске
-        assert path.stat().st_size == 36773
+        assert path.stat().st_size == 36756

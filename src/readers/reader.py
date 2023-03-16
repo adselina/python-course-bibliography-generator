@@ -7,7 +7,13 @@ from typing import Type
 import openpyxl
 from openpyxl.workbook import Workbook
 
-from formatters.models import BookModel, InternetResourceModel, ArticlesCollectionModel
+from formatters.models import (
+    BookModel,
+    InternetResourceModel,
+    ArticlesCollectionModel,
+    DissertationModel,
+    ArticleModel,
+)
 from logger import get_logger
 from readers.base import BaseReader
 
@@ -38,6 +44,7 @@ class BookReader(BaseReader):
             "publishing_house": {4: str},
             "year": {5: int},
             "pages": {6: int},
+            "doi": {7: str},
         }
 
 
@@ -90,6 +97,59 @@ class ArticlesCollectionReader(BaseReader):
         }
 
 
+class DissertationReader(BaseReader):
+    """
+    Чтение модели диссертации или автореферата.
+    """
+
+    @property
+    def model(self) -> Type[DissertationModel]:
+        return DissertationModel
+
+    @property
+    def sheet(self) -> str:
+        return "Диссертация"
+
+    @property
+    def attributes(self) -> dict:
+        return {
+            "authors": {0: str},
+            "dissertation_title": {1: str},
+            "degree": {2: str},
+            "science_branch": {3: str},
+            "specialty_code": {4: str},
+            "city": {5: str},
+            "year": {6: int},
+            "pages": {7: int},
+        }
+
+
+class ArticleReader(BaseReader):
+    """
+    Чтение модели статьи.
+    """
+
+    @property
+    def model(self) -> Type[ArticleModel]:
+        return ArticleModel
+
+    @property
+    def sheet(self) -> str:
+        return "Статья из журнала"
+
+    @property
+    def attributes(self) -> dict:
+        return {
+            "authors": {0: str},
+            "article_title": {1: str},
+            "journal_title": {2: str},
+            "year": {3: int},
+            "journal_number": {4: str},
+            "pages": {5: str},
+            "doi": {6: str},
+        }
+
+
 class SourcesReader:
     """
     Чтение из источника данных.
@@ -100,6 +160,8 @@ class SourcesReader:
         BookReader,
         InternetResourceReader,
         ArticlesCollectionReader,
+        DissertationReader,
+        ArticleReader,
     ]
 
     def __init__(self, path: str) -> None:

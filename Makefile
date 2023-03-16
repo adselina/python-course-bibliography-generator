@@ -20,5 +20,13 @@ lint:
 test:
 	docker compose run app pytest --cov=/src --cov-report html:htmlcov --cov-report term --cov-config=/src/tests/.coveragerc -vv
 
+# форматирование в стиле ГОСТ
+gost:
+	docker compose run app python main.py --citation gost
+
+# форматирование в стиле APA
+apa:
+	docker compose run app python main.py --citation apa
+
 # запуск всех функций поддержки качества кода
 all: format lint test
