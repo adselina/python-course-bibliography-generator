@@ -1,7 +1,6 @@
 """
 Базовые функции форматирования списка источников
 """
-
 from formatters.styles.base import BaseCitationStyle
 from logger import get_logger
 
@@ -17,7 +16,6 @@ class BaseCitationFormatter:
     def __init__(self, formatted_items: list[BaseCitationStyle]) -> None:
         """
         Конструктор.
-
         :param formatted_items: Список объектов для итогового форматирования
         """
 
@@ -26,7 +24,6 @@ class BaseCitationFormatter:
     def format(self) -> list[BaseCitationStyle]:
         """
         Форматирование списка источников.
-
         :return:
         """
 
